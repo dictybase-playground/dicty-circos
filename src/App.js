@@ -1,5 +1,6 @@
-import React, { Component } from "react"
-import Circos from "circos"
+import React, { Component } from "react";
+import Circos from "circos";
+import Circos1 from "./components/Circos1";
 
 let configuration = {
   innerRadius: 250,
@@ -11,7 +12,7 @@ let configuration = {
     position: "center",
     size: "14px",
     color: "#000000",
-    radialOffset: 20,
+    radialOffset: 20
   },
   ticks: {
     display: true,
@@ -28,11 +29,11 @@ let configuration = {
     majorSpacing: 5,
     size: {
       minor: 2,
-      major: 5,
-    },
+      major: 5
+    }
   },
-  events: {},
-}
+  events: {}
+};
 
 const data = [
   { len: 31, color: "#8dd3c7", label: "January", id: "january" },
@@ -46,26 +47,31 @@ const data = [
   { len: 30, color: "#d9d9d9", label: "September", id: "september" },
   { len: 31, color: "#bc80bd", label: "October", id: "october" },
   { len: 30, color: "#ccebc5", label: "November", id: "november" },
-  { len: 31, color: "#ffed6f", label: "December", id: "december" },
-]
+  { len: 31, color: "#ffed6f", label: "December", id: "december" }
+];
 
 class App extends Component {
   constructor(props) {
-    super(props)
-    this.circosRef = React.createRef()
+    super(props);
+    this.circosRef = React.createRef();
   }
   componentDidMount() {
     let myCircos = new Circos({
       width: 800,
       height: 800,
-      container: this.circosRef.current,
-    })
-    myCircos.layout(data, configuration)
-    myCircos.render()
+      container: this.circosRef.current
+    });
+    myCircos.layout(data, configuration);
+    myCircos.render();
   }
   render() {
-    return <div ref={this.circosRef} />
+    return (
+      <div>
+        <div ref={this.circosRef} />
+        <Circos1 />
+      </div>
+    );
   }
 }
 
-export default App
+export default App;
