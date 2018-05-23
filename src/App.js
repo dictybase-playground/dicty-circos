@@ -1,29 +1,11 @@
 import React, { Component } from "react";
 import Circos from "circos";
-import HighlightCircos from "./components/HighlightCircos";
-import Circos2 from "./components/Circos2";
-import HistogramCircos from "./components/HistogramCircos";
 import { Container, Tab, Header, Icon } from "semantic-ui-react";
 
-const panes = [
-  {
-    menuItem: "Circos 1",
-    render: () => (
-      <Tab.Pane>
-        <HistogramCircos />
-      </Tab.Pane>
-    )
-  },
-  {
-    menuItem: "Circos 2",
-    render: () => (
-      <Tab.Pane>
-        <HighlightCircos />
-      </Tab.Pane>
-    )
-  },
-  { menuItem: "Tab 3", render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> }
-];
+/* Circos imports */
+import HighlightCircos from "./components/HighlightCircos";
+import HistogramCircos from "./components/HistogramCircos";
+import LineCircos from "./components/LineCircos";
 
 class App extends Component {
   render() {
@@ -40,8 +22,14 @@ class App extends Component {
             </Header.Subheader>
           </Header>
         </center>
-
-        <Tab panes={panes} />
+        <br />
+        <br />
+        <Container>
+          <LineCircos />
+        </Container>
+        <Container>
+          <HistogramCircos />
+        </Container>
       </Container>
     );
   }

@@ -13,7 +13,7 @@ var snp250 = snp250Raw;
 var snp = snpRaw;
 var snp1m = snp1mRaw;
 
-const GRCh37 = [
+const GRCh371 = [
   { id: "chr1", label: "chr1", color: "#2a4d69", len: 249250621 },
   { id: "chr2", label: "chr2", color: "#4b86b4", len: 243199373 },
   { id: "chr3", label: "chr3", color: "#adcbe3", len: 198022430 }
@@ -57,7 +57,7 @@ class LineCircos extends Component {
       height: 800
     });
 
-    myCircos.layout(GRCh37, {
+    myCircos.layout(GRCh371, {
       innerRadius: 250,
       outerRadius: 260,
       labels: {
@@ -144,7 +144,7 @@ class LineCircos extends Component {
       direction: "out",
       min: 0,
       max: 0.015,
-      color: "#63ace5",
+      color: "#fe2e2e",
       tooltipContent: null
     });
 
@@ -158,7 +158,11 @@ class LineCircos extends Component {
           <center>
             <Message.Header>Line Circos</Message.Header>
           </center>
-          <p>A circos built with nested line graphs.</p>
+          <p>
+            A circos built with nested line circos graphs. Two different line
+            graphs can overlap each other (as shown in the circos below, where
+            the red line is on top of the black line)
+          </p>
         </Message>
         <center>
           <div ref={this.circosRef1} />

@@ -4,7 +4,7 @@ import { electricalData } from "./data/electricalConsumption";
 import { cytobands } from "./data/cytobands.js";
 import { GRCh37 } from "./data/GRCh37.js";
 
-class Circos1 extends Component {
+class HighlightCircos extends Component {
   constructor(props) {
     super(props);
     this.circosRef1 = React.createRef();
@@ -52,6 +52,17 @@ class Circos1 extends Component {
         return "Name: " + x.name;
       }
     });
+    myCircos.highlight("cytobands", cytobands, {
+      innerRadius: 800 / 2 - 100,
+      outerRadius: 800 / 2 - 140,
+      opacity: 0.3,
+      color: function(x) {
+        return gieStainColor[x.gieStain];
+      },
+      tooltipContent: function(x) {
+        return "Name: " + x.name;
+      }
+    });
     myCircos.render();
   }
   render() {
@@ -63,4 +74,4 @@ class Circos1 extends Component {
   }
 }
 
-export default Circos1;
+export default HighlightCircos;
