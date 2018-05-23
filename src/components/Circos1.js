@@ -25,9 +25,6 @@ class Circos1 extends Component {
       select: "rgb(135,177,255)"
     };
 
-    console.log("GRCh37 data: ", GRCh37);
-    console.log("Cytoband data: ", cytobands);
-
     let myCircos = new Circos({
       container: this.circosRef1.current,
       width: 800,
@@ -42,11 +39,6 @@ class Circos1 extends Component {
       ticks: {
         display: true,
         labelDenominator: 1000000
-      },
-      events: {
-        "click.demo": function(d, i, nodes, event) {
-          console.log("clicked on layout block", d, event);
-        }
       }
     });
     myCircos.highlight("cytobands", cytobands, {
@@ -64,9 +56,9 @@ class Circos1 extends Component {
   }
   render() {
     return (
-      <div>
+      <center>
         <div ref={this.circosRef1} />
-      </div>
+      </center>
     );
   }
 }
