@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Circos from "circos";
-import { cytobands } from "./data/cytobands.js";
 import { GRCh37 } from "./data/GRCh37.js";
 import { es } from "./data/es.js";
 import { ips } from "./data/ips.js";
@@ -36,8 +35,8 @@ function buildData(rawData1, rawData2, karyotype) {
     d3.range(0, chr.len, binLength).forEach(function(position) {
       var counter = 0;
       raw1.forEach(function(datum) {
-        var start = parseInt(datum.start);
-        var end = parseInt(datum.end);
+        var start = parseInt(datum.start, 10);
+        var end = parseInt(datum.end, 10);
         if (
           (start < position && end > position) ||
           (start > position && start < position + binLength)
@@ -46,8 +45,8 @@ function buildData(rawData1, rawData2, karyotype) {
         }
       });
       raw2.forEach(function(datum) {
-        var start = parseInt(datum.start);
-        var end = parseInt(datum.end);
+        var start = parseInt(datum.start, 10);
+        var end = parseInt(datum.end, 10);
         if (
           (start < position && end > position) ||
           (start > position && start < position + binLength)

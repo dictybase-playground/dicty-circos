@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Circos from "circos";
-import { electricalData } from "./data/electricalConsumption";
+import { Container, Message } from "semantic-ui-react";
 import { cytobands } from "./data/cytobands.js";
 import { GRCh37 } from "./data/GRCh37.js";
 
@@ -34,7 +34,7 @@ class HighlightCircos extends Component {
       innerRadius: 800 / 2 - 80,
       outerRadius: 800 / 2 - 40,
       labels: {
-        radialOffset: 70
+        display: false
       },
       ticks: {
         display: true,
@@ -67,9 +67,21 @@ class HighlightCircos extends Component {
   }
   render() {
     return (
-      <center>
-        <div ref={this.circosRef1} />
-      </center>
+      <Container>
+        <Message info>
+          <center>
+            <Message.Header>Highlight Circos</Message.Header>
+          </center>
+          <p>
+            A circos built with a highlight. The highlight can be overlapped
+            onto other bands, and there can be multiple highlights nested
+            inside.
+          </p>
+        </Message>
+        <center>
+          <div ref={this.circosRef1} />
+        </center>
+      </Container>
     );
   }
 }

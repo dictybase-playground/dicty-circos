@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Circos from "circos";
-import { Container, Tab, Header, Icon } from "semantic-ui-react";
+import { Container, Header, Icon } from "semantic-ui-react";
 
 /* Circos imports */
 import HighlightCircos from "./components/HighlightCircos";
@@ -29,6 +28,9 @@ class App extends Component {
         </Container>
         <Container>
           <HistogramCircos />
+        </Container>
+        <Container>
+          <HighlightCircos />
         </Container>
       </Container>
     );

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import Circos from "circos";
-import * as d3 from "d3";
 import { Container, Message } from "semantic-ui-react";
 
-import { cytobands } from "./data/cytobands.js";
 import { snp250Raw } from "./data/snp250.js";
 import { snpRaw } from "./data/snp.js";
 import { snp1mRaw } from "./data/snp1m";
@@ -13,7 +11,7 @@ var snp250 = snp250Raw;
 var snp = snpRaw;
 var snp1m = snp1mRaw;
 
-const GRCh371 = [
+const threeChromosomes = [
   { id: "chr1", label: "chr1", color: "#2a4d69", len: 249250621 },
   { id: "chr2", label: "chr2", color: "#4b86b4", len: 243199373 },
   { id: "chr3", label: "chr3", color: "#adcbe3", len: 198022430 }
@@ -29,7 +27,7 @@ class LineCircos extends Component {
     snp250 = snp250.map(function(x) {
       return {
         block_id: x.chromosome,
-        position: (parseInt(x.start) + parseInt(x.end)) / 2,
+        position: (parseInt(x.start, 10) + parseInt(x.end, 10)) / 2,
         value: x.value
       };
     });
@@ -37,7 +35,7 @@ class LineCircos extends Component {
     snp = snp.map(function(x) {
       return {
         block_id: x.chromosome,
-        position: (parseInt(x.start) + parseInt(x.end)) / 2,
+        position: (parseInt(x.start, 10) + parseInt(x.end, 10)) / 2,
         value: x.value
       };
     });
@@ -45,7 +43,7 @@ class LineCircos extends Component {
     snp1m = snp1m.map(function(x) {
       return {
         block_id: x.chromosome,
-        position: (parseInt(x.start) + parseInt(x.end)) / 2,
+        position: (parseInt(x.start, 10) + parseInt(x.end, 10)) / 2,
         value: x.value
       };
     });
@@ -57,7 +55,7 @@ class LineCircos extends Component {
       height: 800
     });
 
-    myCircos.layout(GRCh371, {
+    myCircos.layout(threeChromosomes, {
       innerRadius: 250,
       outerRadius: 260,
       labels: {
