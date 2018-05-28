@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Header, Icon } from "semantic-ui-react";
+import Paper from "@material-ui/core/Paper";
 
 /* Circos imports */
 import HighlightCircos from "./components/HighlightCircos";
@@ -9,30 +9,24 @@ import LineCircos from "./components/LineCircos";
 class App extends Component {
   render() {
     return (
-      <Container>
+      <Paper>
         <br />
         <br />
         <center>
-          <Header as="h2" icon>
-            <Icon name="info circle" />
-            Dicty Access Circos Demos
-            <Header.Subheader>
-              Several different circos diagrams made using Circos.js
-            </Header.Subheader>
-          </Header>
+          <h1>Dicty Access Circos Demos</h1>
         </center>
         <br />
         <br />
-        <Container>
+        <Paper>
           <LineCircos />
-        </Container>
-        <Container>
+        </Paper>
+        <Paper>
           <HistogramCircos />
-        </Container>
-        <Container>
+        </Paper>
+        <Paper>
           <HighlightCircos />
-        </Container>
-      </Container>
+        </Paper>
+      </Paper>
     );
   }
 }

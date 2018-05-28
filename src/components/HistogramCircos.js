@@ -4,7 +4,15 @@ import { GRCh37 } from "./data/GRCh37.js";
 import { es } from "./data/es.js";
 import { ips } from "./data/ips.js";
 import * as d3 from "d3";
-import { Container, Message } from "semantic-ui-react";
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+
+const styles = {
+  container: {
+    paddingLeft: "20%",
+    paddingRight: "20%"
+  }
+};
 
 /*
 * buildData
@@ -73,12 +81,12 @@ class HistogramCircos extends Component {
   componentDidMount() {
     let myCircos = new Circos({
       container: this.circosRef1.current,
-      width: 900,
-      height: 900
+      width: 800,
+      height: 800
     });
     myCircos.layout(GRCh37, {
-      innerRadius: 900 / 2 - 150,
-      outerRadius: 900 / 2 - 120,
+      innerRadius: 800 / 2 - 150,
+      outerRadius: 800 / 2 - 120,
       labels: {
         display: true,
         radialOffset: -15
@@ -111,23 +119,21 @@ class HistogramCircos extends Component {
   }
   render() {
     return (
-      <Container>
-        <Message info>
-          <center>
-            <Message.Header>Histogram Circos</Message.Header>
-          </center>
-          <p>
-            A circos built with nested histograms. In this demo each histogram
-            has been given the same data set (for the sake of convenience) but
-            each histogram can express a unique set of data.
-          </p>
-        </Message>
+      <Paper>
         <center>
-          <div ref={this.circosRef1} />
+          <div className={this.props.classes.container}>
+            <h1>Histogram Circos</h1>
+            <p>
+              A circos built with nested histograms. In this demo each histogram
+              has been given the same data set (for the sake of convenience) but
+              each histogram can express a unique set of data.
+            </p>
+            <div ref={this.circosRef1} />
+          </div>
         </center>
-      </Container>
+      </Paper>
     );
   }
 }
 
-export default HistogramCircos;
+export default withStyles(styles)(HistogramCircos);

@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 import Circos from "circos";
-import { Container, Message } from "semantic-ui-react";
 import { cytobands } from "./data/cytobands.js";
 import { GRCh37 } from "./data/GRCh37.js";
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+
+const styles = {
+  container: {
+    paddingLeft: "20%",
+    paddingRight: "20%"
+  }
+};
 
 class HighlightCircos extends Component {
   constructor(props) {
@@ -27,12 +35,12 @@ class HighlightCircos extends Component {
 
     let myCircos = new Circos({
       container: this.circosRef1.current,
-      width: 800,
-      height: 800
+      width: 700,
+      height: 700
     });
     myCircos.layout(GRCh37, {
-      innerRadius: 800 / 2 - 80,
-      outerRadius: 800 / 2 - 40,
+      innerRadius: 700 / 2 - 80,
+      outerRadius: 700 / 2 - 40,
       labels: {
         display: false
       },
@@ -42,8 +50,8 @@ class HighlightCircos extends Component {
       }
     });
     myCircos.highlight("cytobands", cytobands, {
-      innerRadius: 800 / 2 - 80,
-      outerRadius: 800 / 2 - 40,
+      innerRadius: 700 / 2 - 80,
+      outerRadius: 700 / 2 - 40,
       opacity: 0.3,
       color: function(x) {
         return gieStainColor[x.gieStain];
@@ -53,8 +61,8 @@ class HighlightCircos extends Component {
       }
     });
     myCircos.highlight("cytobands", cytobands, {
-      innerRadius: 800 / 2 - 100,
-      outerRadius: 800 / 2 - 140,
+      innerRadius: 700 / 2 - 100,
+      outerRadius: 700 / 2 - 140,
       opacity: 0.3,
       color: function(x) {
         return gieStainColor[x.gieStain];
@@ -67,23 +75,23 @@ class HighlightCircos extends Component {
   }
   render() {
     return (
-      <Container>
-        <Message info>
-          <center>
-            <Message.Header>Highlight Circos</Message.Header>
-          </center>
-          <p>
-            A circos built with a highlight. The highlight can be overlapped
-            onto other bands, and there can be multiple highlights nested
-            inside.
-          </p>
-        </Message>
+      <Paper>
         <center>
-          <div ref={this.circosRef1} />
+          <div className={this.props.classes.container}>
+            <h1>Highlight Circos</h1>
+            <p>
+              A circos built with a highlight. The highlight can be overlapped
+              onto other bands, and there can be multiple highlights nested
+              inside. If you hover over the highlights, you can a pop-up label
+              of the data point. This adds a layer of interactivity to the
+              circos.
+            </p>
+            <div ref={this.circosRef1} />
+          </div>
         </center>
-      </Container>
+      </Paper>
     );
   }
 }
 
-export default HighlightCircos;
+export default withStyles(styles)(HighlightCircos);

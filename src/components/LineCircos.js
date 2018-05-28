@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Circos from "circos";
-import { Container, Message } from "semantic-ui-react";
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
 
 import { snp250Raw } from "./data/snp250.js";
 import { snpRaw } from "./data/snp.js";
@@ -16,6 +17,13 @@ const threeChromosomes = [
   { id: "chr2", label: "chr2", color: "#4b86b4", len: 243199373 },
   { id: "chr3", label: "chr3", color: "#adcbe3", len: 198022430 }
 ];
+
+const styles = {
+  container: {
+    paddingLeft: "20%",
+    paddingRight: "20%"
+  }
+};
 
 class LineCircos extends Component {
   constructor(props) {
@@ -151,23 +159,22 @@ class LineCircos extends Component {
 
   render() {
     return (
-      <Container>
-        <Message info>
-          <center>
-            <Message.Header>Line Circos</Message.Header>
-          </center>
-          <p>
-            A circos built with nested line circos graphs. Two different line
-            graphs can overlap each other (as shown in the circos below, where
-            the red line is on top of the black line)
-          </p>
-        </Message>
+      <Paper>
         <center>
+          <div className={this.props.classes.container}>
+            <h1>Line Circos</h1>
+            <p>
+              A circos built with nested line circos graphs. Two different line
+              graphs can overlap each other (as shown in the circos below, where
+              the red line is on top of the black line)
+            </p>
+          </div>
+
           <div ref={this.circosRef1} />
         </center>
-      </Container>
+      </Paper>
     );
   }
 }
 
-export default LineCircos;
+export default withStyles(styles)(LineCircos);
