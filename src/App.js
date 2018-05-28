@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import HighlightCircos from "./components/HighlightCircos";
 import HistogramCircos from "./components/HistogramCircos";
 import LineCircos from "./components/LineCircos";
+import ScatterCircos from "./components/ScatterCircos";
 
 class App extends Component {
   render() {
@@ -17,6 +18,9 @@ class App extends Component {
         </center>
         <br />
         <br />
+        <Paper>
+          <ScatterCircos />
+        </Paper>
         <Paper>
           <LineCircos />
         </Paper>

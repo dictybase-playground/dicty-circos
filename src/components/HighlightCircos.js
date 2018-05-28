@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Circos from "circos";
-import { cytobands } from "./data/cytobands.js";
+import { cytobandsRaw } from "./data/cytobands.js";
 import { GRCh37 } from "./data/GRCh37.js";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -49,7 +49,7 @@ class HighlightCircos extends Component {
         labelDenominator: 1000000
       }
     });
-    myCircos.highlight("cytobands", cytobands, {
+    myCircos.highlight("cytobandsRaw", cytobandsRaw, {
       innerRadius: 700 / 2 - 80,
       outerRadius: 700 / 2 - 40,
       opacity: 0.3,
@@ -60,7 +60,7 @@ class HighlightCircos extends Component {
         return "Name: " + x.name;
       }
     });
-    myCircos.highlight("cytobands", cytobands, {
+    myCircos.highlight("cytobandsRaw", cytobandsRaw, {
       innerRadius: 700 / 2 - 100,
       outerRadius: 700 / 2 - 140,
       opacity: 0.3,

@@ -1,4 +1,4 @@
-export const cytobands = [
+export const cytobandsRaw = [
   {
     block_id: "chr1",
     start: 0,
